@@ -3,7 +3,7 @@
 不建议用高版本gcc编译centos7.8(linux-3.10.0-1127.el7.x86_64) 内核, 本人使用qemu下的centos7.8编译后传回主机
 gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)
 
-## 1. put patch reference from https://lkml.kernel.org/lkml/528D4A1A.2050100@zytor.com/T/ on kernel source code
+## 1. put patch reference from [内核补丁参考](https://lkml.kernel.org/lkml/528D4A1A.2050100@zytor.com/T/) on kernel source code
 
 ```
 ---
@@ -203,7 +203,7 @@ index 77a4e62..bc8d25e 100644
 ## 3. compile kernel
 after `make menuconfig` then `make bzImage -j8`
 bzImage show in ${kernel_path}/arch/x86/boot/bzImage
-** you can reference artical to build a qemu environment**==>QEMU+GDB调试Linux内核总结（全） https://blog.csdn.net/M120674/article/details/118856793?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-118856793-blog-80967912.pc_relevant_blogantidownloadv1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-118856793-blog-80967912.pc_relevant_blogantidownloadv1&utm_relevant_index=1
+** you can reference artical to build a qemu environment**==>[QEMU+GDB调试Linux内核总结](https://blog.csdn.net/M120674/article/details/118856793?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-118856793-blog-80967912.pc_relevant_blogantidownloadv1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-118856793-blog-80967912.pc_relevant_blogantidownloadv1&utm_relevant_index=1)
 
 ## 4. pass cmdline to set cma size
 	cma=nn[MG]	[ARM,KNL]
@@ -225,7 +225,7 @@ qemu-system-x86_64 \
 ```
 
 ## 5. test module
-reference kernel module helper for testing CMA==> https://lwn.net/Articles/485193/
+reference kernel module helper for testing CMA==> [simple kernel module as the helper to test CMA](https://lwn.net/Articles/485193/)
 
 ## 6. check memory alloction station
 `cat /proc/meminfo |grep Cma`
