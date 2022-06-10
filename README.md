@@ -229,5 +229,16 @@ reference kernel module helper for testing CMA==> [simple kernel module as the h
 
 ## 6. check memory alloction station
 `cat /proc/meminfo |grep Cma`
+## 7. CMA优缺点
+[CMA优缺点等参考](https://blog.csdn.net/Rong_Toa/article/details/109558234)
+1. 优点  
+精心设计，即使在内存碎片情况下也可用于大型连续内存分配。
+CMA中的页面可以由伙伴系统共享，而不是保留池共享
+可以是特定于设备的CMA区域，仅由该设备使用并与系统共享
+无需重新编译内核即可轻松配置它的启动地址和大小
+2. 缺点  
+需要迁移页面时分配过程变慢
+容易被系统内存分配破坏。当系统内存不足时，客户可能会遇到cma_alloc故障，这会在前台应用程序需要图形缓冲区进行渲染而RVC希望缓冲区用于CAR反向时导致不良的用户体验。
+当cma_alloc（）需要迁移某些页面时仍可能出现死锁，而这些页面仍在刷新到存储中（当FUSE文件系统在回写路径中有一页时，某些客户已经遇到了死锁，而cma_alloc希望迁移它）。这是编写
 
 邰佳俊 (tel:18020521131)
